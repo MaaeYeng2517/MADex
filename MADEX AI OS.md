@@ -1,4 +1,4 @@
-ใช่ครับ — ถ้าจะทำ **MADEX AI OS** ให้เป็นโครงการ Open Source ระยะยาว ผมแนะนำให้กำหนดโครงสร้างอย่างเป็นทางการว่า **MADEX ไม่ใช่ AI Agent Framework แต่เป็น AI Operating Platform** โดยมี 7 Core Systems เป็นแกนสถาปัตยกรรม
+
 
 # MADEX AI OS
 
@@ -35,6 +35,7 @@
 ทำหน้าที่เป็น Runtime Core ของ MADEX AI OS
 
 ```text
+
 MADEX Kernel
 ├── Model Runtime
 ├── Agent Runtime Interface
@@ -233,19 +234,19 @@ User:
 
                 ↓
 
-          MADEX Router
-
-       ┌────────┼────────┐
-       ↓        ↓        ↓
- Data Agent  Research  Analyst
-       │        Agent      │
-       └────────┼──────────┘
-                ↓
-          Decision Agent
-                ↓
-            Verification
-                ↓
-              Report
+                MADEX Router
+      
+             ┌────────┼────────┐
+             ↓        ↓        ↓
+       Data Agent  Research  Analyst
+             │        Agent      │
+             └────────┼──────────┘
+                      ↓
+                Decision Agent
+                      ↓
+                  Verification
+                      ↓
+                    Report
 ```
 
 ---
