@@ -1,5 +1,3 @@
-
-
 # MADEX AI OS
 
 > **Open Source AI Operating Platform for Intelligent Agents**
@@ -26,8 +24,150 @@
     Models             Tools             Data
                          │
                     Governance
-```
+```mermaid
+Graph TB
 
+    %% ========================================
+    %% MADEX AI OS
+    %% ========================================
+
+    USER["Human / Organization"]
+    APP["AI Applications"]
+
+    subgraph MADEX["MADEX AI OS"]
+        
+        subgraph INTELLIGENCE["Intelligence Layer"]
+            AGENT["MADEX Agent Runtime"]
+            REASON["Reasoning Engine"]
+            PLAN["Planning Engine"]
+            DECISION["Decision Engine"]
+        end
+
+        subgraph ORCHESTRATION["Orchestration Layer"]
+            ORCH["MADEX Orchestrator"]
+            ROUTER["AI Router"]
+            WORKFLOW["Workflow Engine"]
+            A2A["Agent-to-Agent"]
+        end
+
+        subgraph CONTEXT["Context & Knowledge Layer"]
+            CONTEXT_ENGINE["MADEX Context Engine"]
+            RAG["RAG Engine"]
+            MEMORY["Memory System"]
+            KNOWLEDGE["MADEX Knowledge OS"]
+            GRAPH["Knowledge Graph"]
+            VECTOR["Vector Search"]
+        end
+
+        subgraph CAPABILITY["Capability Layer"]
+            SKILL["MADEX Skill System"]
+            MCP["MCP"]
+            TOOLS["Tools / APIs"]
+        end
+
+        subgraph KERNEL["Core Runtime"]
+            KERNEL_CORE["MADEX Kernel"]
+            MODEL_RUNTIME["Model Runtime"]
+            AGENT_RUNTIME["Agent Runtime"]
+            TOOL_RUNTIME["Tool Runtime"]
+            MEMORY_RUNTIME["Memory Runtime"]
+        end
+
+        subgraph GOVERNANCE["Governance Layer"]
+            GOVERN["MADEX Governance"]
+            IAM["Identity & Access"]
+            POLICY["Policy Engine"]
+            AUDIT["Audit Log"]
+            EVAL["Evaluation"]
+            OBS["Observability"]
+        end
+    end
+
+    subgraph MODELS["AI Models"]
+        LLM["LLM"]
+        VLM["VLM"]
+        SLM["SLM"]
+        LOCAL["Local Models"]
+    end
+
+    subgraph DATA["Data Sources"]
+        DB["Databases"]
+        DOC["Documents"]
+        API["External APIs"]
+        FILE["Files"]
+        STREAM["Data Streams"]
+    end
+
+    %% User Flow
+    USER --> APP
+    APP --> ORCH
+
+    %% Orchestration
+    ORCH --> ROUTER
+    ROUTER --> AGENT
+    ORCH --> WORKFLOW
+    ORCH --> A2A
+
+    %% Agent Intelligence
+    AGENT --> REASON
+    REASON --> PLAN
+    PLAN --> DECISION
+
+    %% Context
+    AGENT --> CONTEXT_ENGINE
+    CONTEXT_ENGINE --> RAG
+    CONTEXT_ENGINE --> MEMORY
+    CONTEXT_ENGINE --> KNOWLEDGE
+
+    %% Knowledge
+    KNOWLEDGE --> GRAPH
+    KNOWLEDGE --> VECTOR
+
+    %% Skills
+    AGENT --> SKILL
+    SKILL --> MCP
+    MCP --> TOOLS
+
+    %% Kernel
+    AGENT --> KERNEL_CORE
+    CONTEXT_ENGINE --> KERNEL_CORE
+    SKILL --> KERNEL_CORE
+
+    KERNEL_CORE --> MODEL_RUNTIME
+    KERNEL_CORE --> AGENT_RUNTIME
+    KERNEL_CORE --> TOOL_RUNTIME
+    KERNEL_CORE --> MEMORY_RUNTIME
+
+    %% Models
+    MODEL_RUNTIME --> LLM
+    MODEL_RUNTIME --> VLM
+    MODEL_RUNTIME --> SLM
+    MODEL_RUNTIME --> LOCAL
+
+    %% Data
+    DB --> KNOWLEDGE
+    DOC --> KNOWLEDGE
+    API --> KNOWLEDGE
+    FILE --> KNOWLEDGE
+    STREAM --> KNOWLEDGE
+
+    %% Governance
+    GOVERN -.-> KERNEL_CORE
+    GOVERN -.-> AGENT
+    GOVERN -.-> ORCH
+    GOVERN -.-> KNOWLEDGE
+    GOVERN -.-> TOOLS
+
+    GOVERN --> IAM
+    GOVERN --> POLICY
+    GOVERN --> AUDIT
+    GOVERN --> EVAL
+    GOVERN --> OBS
+
+    %% Final Action
+    DECISION --> TOOLS
+    TOOLS --> APP
+  ```
 ## 1. MADEX Kernel
 
 **หัวใจของระบบ**
@@ -347,16 +487,16 @@ policy:
 ```mermaid
 flowchart TB
 
-    APP[AI Applications]
+    APP[Applications]
 
-    K[MADEX Kernel]
+    K[Kernel]
 
-    AR[MADEX Agent Runtime]
-    CE[MADEX Context Engine]
-    KO[MADEX Knowledge OS]
-    OR[MADEX Orchestrator]
-    SS[MADEX Skill System]
-    GV[MADEX Governance]
+    AR[Agent Runtime]
+    CE[Context Engine]
+    KO[Knowledge OS]
+    OR[Orchestrator]
+    SS[Skill System]
+    GV[Governance]
 
     MODEL[LLM / VLM / SLM]
     DATA[(Enterprise Data)]
